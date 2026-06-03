@@ -1,5 +1,7 @@
 import { Request, Response, NextFunction } from "express";
-import postDB from "@/db/postQueries.js";
+import postDB from "@/posts/postDb.js";
+//import commentQueries from "@/posts/commentQueries.js";
+
 const postController = {
   getPost: async (req: Request, res: Response, next: NextFunction) => {
     try {

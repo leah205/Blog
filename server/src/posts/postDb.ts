@@ -12,14 +12,11 @@ const postDB = {
     return posts;
   },
   getPost: async (postid: number) => {
-    console.log("hello");
-    console.log(postid);
     const post = await prisma.post.findUnique({
       where: {
-        id: postid,
+        postId: postid,
       },
     });
-
     return post;
   },
 };

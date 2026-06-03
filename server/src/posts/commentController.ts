@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import commentQueries from "@/db/commentQueries.js";
+import commentQueries from "@/posts/commentQueries.js";
 const commentController = {
   get: async (req: Request, res: Response, next: NextFunction) => {
     try {

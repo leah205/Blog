@@ -3,7 +3,7 @@ const app = express();
 import cors from "cors";
 import passport from "@/passport.js";
 import config from "@/config/config.js";
-import indexRouter from "@/routes/index.js";
+import indexRouter from "@/index_router.js";
 import { Request, Response, NextFunction } from "express";
 
 import session from "express-session";
