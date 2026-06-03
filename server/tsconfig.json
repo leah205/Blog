@@ -2,15 +2,19 @@
   "extends": "@tsconfig/node12/tsconfig.json",
 
   "compilerOptions": {
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
+    // "module": "NodeNext",
+    // "moduleResolution": "NodeNext",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+
     "baseUrl": "./",
     "ignoreDeprecations": "6.0",
     "target": "ES2022",
     "esModuleInterop": true,
     "strict": true,
-    "types": ["./type-defs/express-request-merging.d.ts"],
+    "types": ["./type-defs/express-request-merging.d.ts", "jest"],
     "paths": { "*": ["*.d.ts"], "@/*": ["src/*"] }
+
     //"noImplicitAny": false
   },
   "include": ["src", "type-defs"]

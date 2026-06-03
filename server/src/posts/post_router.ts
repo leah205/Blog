@@ -1,6 +1,6 @@
 import express from "express";
-import postController from "@/posts/postController.js";
-import commentController from "@/posts/commentController.js";
+import postController from "@/posts/postController";
+import commentController from "@/posts/commentController";
 const post_router = express.Router();
 
 post_router.get("/", postController.getPosts);

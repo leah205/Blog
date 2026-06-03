@@ -1,4 +1,4 @@
-import userQueries from "@/auth/userQueries.js";
+import userQueries from "@/auth/userQueries";
 import { NextFunction, Request, Response } from "express";
 
 import { validationResult } from "express-validator";

@@ -1,8 +1,11 @@
 import dotenv from "dotenv";
+
 dotenv.config();
 
 const secret = process.env.SECRET;
-const db_url = process.env.DATABASE_URL;
+const env = process.env.NODE_ENV;
+const db_url =
+  env == "test" ? process.env.TEST_DATABASE_URL : process.env.TEST_DATABASE_URL;
 
 if (!secret) {
   throw new Error("secret is not defined");

@@ -1,7 +1,7 @@
-import router from "@/index_router.js";
+import router from "@/index_router";
 import express from "express";
 import { appendFile } from "node:fs";
-import homeController from "./homeController.js";
+import homeController from "./homeController";
 const public_router = express.Router();
 
 public_router.get("/", homeController.get);

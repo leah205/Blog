@@ -1,14 +1,14 @@
 import express from "express";
 const app = express();
 import cors from "cors";
-import passport from "@/passport.js";
-import config from "@/config/config.js";
-import indexRouter from "@/index_router.js";
+import passport from "@/passport";
+import config from "@/config/config";
+import indexRouter from "@/index_router";
 import { Request, Response, NextFunction } from "express";
 
 import session from "express-session";
 import { PrismaSessionStore } from "@quixo3/prisma-session-store";
-import prisma from "@/db/prisma_client.js";
+import prisma from "@/db/prisma_client";
 const corsOptions = {
   origin: ["http://localhost:5173"],
 };

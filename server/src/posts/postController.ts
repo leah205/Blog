@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import postDB from "@/posts/postDb.js";
+import postDB from "@/posts/postDb";
 //import commentQueries from "@/posts/commentQueries.js";
 
 const postController = {

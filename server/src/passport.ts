@@ -1,7 +1,7 @@
 import passport from "passport";
-import pool from "@/db/pool.js";
+import pool from "@/db/pool";
 import bcryptjs from "bcryptjs";
-import prisma from "@/db/prisma_client.js";
+import prisma from "@/db/prisma_client";
 
 import { Strategy as JwtStrategy, ExtractJwt } from "passport-jwt";
 import { Strategy as LocalStrategy } from "passport-local";

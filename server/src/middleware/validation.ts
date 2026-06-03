@@ -1,5 +1,5 @@
 import { body } from "express-validator";
-import userQueries from "@/db/userQueries.js";
+import userQueries from "@/auth/userQueries";
 
 const validation = {
   signup: [
