@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon --exec \"node --loader ts-node/esm\" src/app.ts",
+    "start": "tsx watch src/app.ts",
     "lint": "eslint 'src/**/*.ts'",
     "populate": "node --loader ts-node/esm src/db/populatedb.ts"
   },
@@ -26,6 +27,7 @@
     "express": "^5.2.1",
     "express-session": "^1.19.0",
     "express-validator": "^7.3.2",
+    "jsonwebtoken": "^9.0.3",
     "nodemon": "^3.1.14",
     "passport": "^0.7.0",
     "pg": "^8.21.0",

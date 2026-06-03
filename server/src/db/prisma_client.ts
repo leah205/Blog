@@ -1,6 +1,6 @@
 import { PrismaClient } from "../../generated/prisma/index.js";
 import { PrismaPg } from "@prisma/adapter-pg";
-import config from "../config/config.js";
+import config from "@/config/config.js";
 
 const connectionString = `${config.db_url}`;
 const adapter = new PrismaPg({ connectionString });

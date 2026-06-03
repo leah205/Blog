@@ -4,13 +4,16 @@
   "compilerOptions": {
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
+    "baseUrl": "./",
+    "ignoreDeprecations": "6.0",
     "target": "ES2022",
     "esModuleInterop": true,
     "strict": true,
-    "types": ["./type-defs/express-request-merging.d.ts"]
+    "types": ["./type-defs/express-request-merging.d.ts"],
+    "paths": { "*": ["*.d.ts"], "@/*": ["src/*"] }
     //"noImplicitAny": false
   },
-  "include": ["src"]
+  "include": ["src", "type-defs"]
 }
 
 // {

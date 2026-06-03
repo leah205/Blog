@@ -1,7 +1,15 @@
 import { Request, Response, NextFunction } from "express";
-import postDB from "../db/postQueries.js";
+import postDB from "@/db/postQueries.js";
 const postController = {
-  get: async (req: Request, res: Response, next: NextFunction) => {
+  getPost: async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const post = await postDB.getPost(Number(req.params.postid));
+      res.json(post);
+    } catch (err) {
+      next(err);
+    }
+  },
+  getPosts: async (req: Request, res: Response, next: NextFunction) => {
     try {
       const posts = await postDB.getPosts();
       res.json(posts);

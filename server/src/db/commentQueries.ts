@@ -1,4 +1,4 @@
-import prisma from "../db/prisma_client.js";
+import prisma from "@/db/prisma_client.js";
 
 const commentQueries = {
   get: async (postid: number) => {

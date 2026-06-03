@@ -1,5 +1,5 @@
 import { Client } from "pg";
-import config from "../config/config.js";
+import config from "@/config/config.js";
 console.log(config.db_url);
 const SQL = `
 INSERT INTO comments (content, "authorId", "postId")
