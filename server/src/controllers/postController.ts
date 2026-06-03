@@ -32,7 +32,6 @@ const postController = {
     } catch (err) {
       next(err);
     }
-    res.json({ route: "home" });
   },
 };
 
