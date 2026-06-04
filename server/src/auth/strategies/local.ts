@@ -10,7 +10,7 @@ export default new LocalStrategy(async (username, password, done) => {
         username: username,
       },
     });
-    console.log(user);
+
     if (!user) {
       console.log("incorrect username");
       return done(null, false, { message: "incorrect username" });

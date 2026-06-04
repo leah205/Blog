@@ -6,7 +6,21 @@ const postDB = {
     content: string,
     userId: number,
     publish: boolean,
-  ) => {},
+  ) => {
+    const post = await prisma.post.create({
+      data: {
+        content: content,
+        author: {
+          connect: {
+            id: userId,
+          },
+        },
+        title: title,
+        publish: publish,
+      },
+    });
+    return post;
+  },
   getPosts: async () => {
     const posts = await prisma.post.findMany();
     return posts;

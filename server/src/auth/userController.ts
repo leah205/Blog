@@ -13,13 +13,15 @@ const userController = {
   signup: {
     post: async (req: Request, res: Response) => {
       const errors = validationResult(req);
-      console.log(errors);
+
       if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
       }
+      const isAuthor = req.body.username == "leah" ? true : false;
       const user = await userQueries.createUser(
         req.body.username,
         req.body.password,
+        isAuthor,
       );
       res.json(user);
     },
@@ -43,7 +45,14 @@ const userController = {
             }
           });
 
-          const token = jwt.sign(user, config.secret);
+          const token = jwt.sign(
+            {
+              id: user.id,
+              username: user.username,
+              isAuthor: user.isAuthor,
+            },
+            config.secret,
+          );
           return res.json({ user, token });
         },
       )(req, res, next);

@@ -1,10 +1,11 @@
 import express from "express";
 const app = express();
 import cors from "cors";
-import passport from "@/auth/passport_config.ts";
+import passport from "@/auth/passport_config";
 import config from "@/config/config";
 import indexRouter from "@/index_router";
 import { Request, Response, NextFunction } from "express";
+import { AppError } from "./Errors";
 
 import session from "express-session";
 import { PrismaSessionStore } from "@quixo3/prisma-session-store";
@@ -40,15 +41,14 @@ app.use((req: Request, res: Response, next: NextFunction) => {
   if (req.user) {
     res.locals.user = req.user;
   }
-
   next();
 });
 
 app.use("/", indexRouter);
 
-app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+app.use((err: AppError, req: Request, res: Response, next: NextFunction) => {
   console.error(err);
-  res.status(500).send(err);
+  res.status(err.statusCode).json(err.message);
   next();
 });
 

@@ -16,12 +16,13 @@ const postController = {
     if (!req.user) {
       return next(new AppError("no user defined", 404));
     }
-    await postDB.createPost(
+    const post = await postDB.createPost(
       req.body.title,
       req.body.content,
       req.user.id,
       req.body.published,
     );
+    res.json(post);
   },
 };
 
