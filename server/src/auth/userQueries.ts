@@ -12,6 +12,15 @@ const userQueries = {
     });
     return user;
   },
+  isUsernameTaken: async (username: string) => {
+    const user = await prisma.user.findUnique({
+      where: {
+        username: username,
+      },
+    });
+    console.log(Boolean(user));
+    return Boolean(user);
+  },
 };
 
 export default userQueries;
