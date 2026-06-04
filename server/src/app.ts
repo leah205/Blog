@@ -1,7 +1,7 @@
 import express from "express";
 const app = express();
 import cors from "cors";
-import passport from "@/passport";
+import passport from "@/auth/passport_config.ts";
 import config from "@/config/config";
 import indexRouter from "@/index_router";
 import { Request, Response, NextFunction } from "express";

@@ -1,8 +1,7 @@
-import router from "@/index_router";
 import express from "express";
-import { appendFile } from "node:fs";
 import homeController from "./homeController";
 const public_router = express.Router();
+import { asyncHandler } from "@/Errors";
 
-public_router.get("/", homeController.get);
+public_router.get("/", asyncHandler(homeController.get));
 export default public_router;

@@ -12,7 +12,13 @@
     "target": "ES2022",
     "esModuleInterop": true,
     "strict": true,
-    "types": ["./type-defs/express-request-merging.d.ts", "jest"],
+    "types": [
+      "./type-defs/express-request-merging.d.ts",
+      "jest",
+      "passport",
+      "passport-local",
+      "express"
+    ],
     "paths": { "*": ["*.d.ts"], "@/*": ["src/*"] }
 
     //"noImplicitAny": false

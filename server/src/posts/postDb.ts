@@ -14,7 +14,7 @@ const postDB = {
   getPost: async (postid: number) => {
     const post = await prisma.post.findUnique({
       where: {
-        postId: postid,
+        id: postid,
       },
     });
     return post;
