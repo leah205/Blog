@@ -4,6 +4,7 @@ import passport from "@/auth/passport_config";
 import { validationResult } from "express-validator";
 import jwt from "jsonwebtoken";
 import config from "@/config/config";
+import { AppError } from "@/Errors";
 
 interface authInfo {
   message?: string;
@@ -56,6 +57,13 @@ const userController = {
           return res.json({ user, token });
         },
       )(req, res, next);
+    },
+  },
+
+  logout: {
+    get: async (req: Request, res: Response) => {
+      // add in logout frontend logic
+      res.json({ logout: "success" });
     },
   },
 };

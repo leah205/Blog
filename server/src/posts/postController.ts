@@ -1,6 +1,8 @@
 import { Request, Response, NextFunction } from "express";
 import postDB from "@/posts/postDb";
 import { AppError } from "@/Errors";
+import { validationResult } from "express-validator";
+
 //import commentQueries from "@/posts/commentQueries.js";
 
 const postController = {
@@ -13,6 +15,11 @@ const postController = {
     res.json(posts);
   },
   post: async (req: Request, res: Response, next: NextFunction) => {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
     if (!req.user) {
       return next(new AppError("no user defined", 404));
     }

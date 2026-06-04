@@ -5,6 +5,7 @@ const post_router = express.Router();
 import { asyncHandler } from "@/Errors";
 import verifyToken from "@/middleware/authenticateToken";
 import verifyAuthor from "@/middleware/verifyAuthor";
+import validation from "@/middleware/validation";
 
 post_router.get("/", verifyToken, asyncHandler(postController.getPosts));
 post_router.get("/:postid", verifyToken, asyncHandler(postController.getPost));
@@ -17,6 +18,7 @@ post_router.post(
   "/",
   asyncHandler(verifyToken),
   verifyAuthor,
+  validation.createPost,
   asyncHandler(postController.post),
 );
 

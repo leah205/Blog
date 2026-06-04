@@ -10,5 +10,6 @@ auth_router.post(
   asyncHandler(userController.signup.post),
 );
 auth_router.post("/login", asyncHandler(userController.login.post));
+auth_router.get("/logout", asyncHandler(userController.logout.get));
 
 export default auth_router;
