@@ -17,11 +17,11 @@ const userController = {
       if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
       }
-      const isAuthor = req.body.username == "leah" ? true : false;
+      const is_author = req.body.username == "leah" ? true : false;
       const user = await userQueries.createUser(
         req.body.username,
         req.body.password,
-        isAuthor,
+        is_author,
       );
       res.json(user);
     },
@@ -49,7 +49,7 @@ const userController = {
             {
               id: user.id,
               username: user.username,
-              isAuthor: user.isAuthor,
+              is_author: user.is_author,
             },
             config.secret,
           );
