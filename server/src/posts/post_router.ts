@@ -21,5 +21,11 @@ post_router.post(
   validation.createPost,
   asyncHandler(postController.post),
 );
+post_router.post(
+  "/:postid/comments",
+  verifyToken,
+  validation.createComment,
+  asyncHandler(commentController.post),
+);
 
 export default post_router;
