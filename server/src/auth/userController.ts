@@ -53,6 +53,7 @@ const userController = {
               is_author: user.is_author,
             },
             config.secret,
+            { expiresIn: "1hr" },
           );
           return res.json({ user, token });
         },
