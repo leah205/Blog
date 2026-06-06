@@ -7,13 +7,9 @@ import verifyToken from "@/middleware/authenticateToken";
 import verifyAuthor from "@/middleware/verifyAuthor";
 import validation from "@/middleware/validation";
 
-post_router.get("/", verifyToken, asyncHandler(postController.getPosts));
-post_router.get("/:postid", verifyToken, asyncHandler(postController.getPost));
-post_router.get(
-  "/:postid/comments",
-  asyncHandler(verifyToken),
-  asyncHandler(commentController.get),
-);
+post_router.get("/", asyncHandler(postController.getPosts));
+post_router.get("/:postid", asyncHandler(postController.getPost));
+post_router.get("/:postid/comments", asyncHandler(commentController.get));
 post_router.post(
   "/",
   asyncHandler(verifyToken),
