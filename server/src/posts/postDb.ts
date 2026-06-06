@@ -1,5 +1,11 @@
 import prisma from "@/db/prisma_client";
 
+type updateObject = {
+  title?: string;
+  content?: string;
+  published?: boolean;
+};
+
 const postDB = {
   createPost: async (
     title: string,
@@ -29,6 +35,17 @@ const postDB = {
     const post = await prisma.post.findUnique({
       where: {
         id: postid,
+      },
+    });
+    return post;
+  },
+  updatePost: async (newFields: updateObject, postid: number) => {
+    const post = await prisma.post.update({
+      where: {
+        id: postid,
+      },
+      data: {
+        ...newFields,
       },
     });
     return post;

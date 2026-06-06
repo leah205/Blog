@@ -10,6 +10,7 @@ import { AppError } from "./Errors";
 import session from "express-session";
 import { PrismaSessionStore } from "@quixo3/prisma-session-store";
 import prisma from "@/db/prisma_client";
+
 const corsOptions = {
   origin: ["http://localhost:5173"],
 };
@@ -48,7 +49,7 @@ app.use("/", indexRouter);
 
 app.use((err: AppError, req: Request, res: Response, next: NextFunction) => {
   console.error(err);
-  res.status(err.statusCode).json(err.message);
+  res.status(err.statusCode || 500).json(err.message);
   next();
 });
 

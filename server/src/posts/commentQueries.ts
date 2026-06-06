@@ -27,6 +27,14 @@ const commentQueries = {
     });
     return comment;
   },
+  delete: async (commentid: number) => {
+    const comments = prisma.comment.delete({
+      where: {
+        id: commentid,
+      },
+    });
+    return comments;
+  },
 };
 
 export default commentQueries;

@@ -31,6 +31,13 @@ const postController = {
     );
     res.json(post);
   },
+  update: async (req: Request, res: Response) => {
+    const post = await postDB.updatePost(
+      req.body.newFields,
+      Number(req.params.postid),
+    );
+    res.json(post);
+  },
 };
 
 export default postController;

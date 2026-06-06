@@ -17,15 +17,30 @@ post_router.get(
 post_router.post(
   "/",
   asyncHandler(verifyToken),
-  verifyAuthor,
+  asyncHandler(verifyAuthor),
   validation.createPost,
   asyncHandler(postController.post),
 );
 post_router.post(
   "/:postid/comments",
-  verifyToken,
+  asyncHandler(verifyToken),
   validation.createComment,
   asyncHandler(commentController.post),
+);
+
+post_router.delete(
+  "/:postid/comments/:commentid",
+  asyncHandler(verifyToken),
+  asyncHandler(verifyAuthor),
+  validation.createComment,
+  asyncHandler(commentController.delete),
+);
+
+post_router.put(
+  "/:postid",
+  asyncHandler(verifyToken),
+  asyncHandler(verifyAuthor),
+  asyncHandler(postController.update),
 );
 
 export default post_router;

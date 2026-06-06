@@ -24,6 +24,10 @@ const commentController = {
     );
     res.json(comment);
   },
+  delete: async (req: Request, res: Response) => {
+    await commentQueries.delete(Number(req.params.commentid));
+    res.json({ delete: "success" });
+  },
 };
 
 export default commentController;
