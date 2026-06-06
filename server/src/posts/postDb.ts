@@ -46,6 +46,7 @@ const postDB = {
       },
       data: {
         ...newFields,
+        uploadedAt: new Date(),
       },
     });
     return post;
