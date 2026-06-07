@@ -1,6 +1,7 @@
-import { Link, Outlet } from "react-router-dom";
+import type React from "react";
+import { Link } from "react-router-dom";
 
-export default function AppLayout() {
+export default function AppLayout({ children }: { children: React.ReactNode }) {
   // context for whether there is a user - sign in / stay out
   return (
     <>
@@ -23,9 +24,7 @@ export default function AppLayout() {
           </li>
         </ul>
       </nav>
-      <div>
-        <Outlet />
-      </div>
+      <div>{children}</div>
     </>
   );
 }
