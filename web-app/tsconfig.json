@@ -6,31 +6,55 @@
 //   ]
 // }
 
+// {
+//   "extends": "@tsconfig/node12/tsconfig.json",
+
+//   "compilerOptions": {
+//     "module": "ESNext",
+//     "moduleResolution": "Bundler",
+
+//     "baseUrl": "./",
+//     "ignoreDeprecations": "6.0",
+//     "target": "ES2022",
+//     "esModuleInterop": true,
+//     "strict": true,
+//     "types": [
+//       "./type-defs/express-request-merging.d.ts",
+//       "jest",
+//       "passport",
+//       "passport-local",
+//       "express",
+//       "react",
+//       "react-dom"
+//     ],
+//     "paths": { "*": ["*.d.ts"], "@/*": ["src/*"] },
+//     "jsx": "react-jsx"
+
+//     //"noImplicitAny": false
+//   },
+//   "include": ["src", "type-defs"]
+// }
 {
-  "extends": "@tsconfig/node12/tsconfig.json",
-
   "compilerOptions": {
-    "module": "ESNext",
-    "moduleResolution": "Bundler",
-
-    "baseUrl": "./",
-    "ignoreDeprecations": "6.0",
-    "target": "ES2022",
-    "esModuleInterop": true,
+    "noEmit": true,
     "strict": true,
-    "types": [
-      "./type-defs/express-request-merging.d.ts",
-      "jest",
-      "passport",
-      "passport-local",
-      "express",
-      "react",
-      "react-dom"
-    ],
-    "paths": { "*": ["*.d.ts"], "@/*": ["src/*"] },
-    "jsx": "react-jsx"
-
-    //"noImplicitAny": false
+    "target": "ESNext",
+    "lib": ["ES2025", "DOM", "DOM.Iterable"],
+    "allowJs": true,
+    "jsx": "preserve",
+    "esModuleInterop": true,
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "forceConsistentCasingInFileNames": true,
+    "useUnknownInCatchVariables": true,
+    "noImplicitOverride": true,
+    "verbatimModuleSyntax": true,
+    "paths": {
+      "test/*": ["./test/*"],
+      "~/*": ["./src/*"]
+    },
+    "types": ["node"]
   },
-  "include": ["src", "type-defs"]
+  "include": ["src", "test"],
+  "paths": { "*": ["*.d.ts"], "@/*": ["src/*"] }
 }

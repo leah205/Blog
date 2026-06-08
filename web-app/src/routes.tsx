@@ -4,6 +4,7 @@ import PostPage from "./components/PostPage";
 import PostsPage from "./components/PostsPage";
 import SigninPage from "./components/SigninPage";
 import SignupPage from "./components/SignupPage";
+import ErrorPage from "./components/ErrorPage";
 
 import {
   Route,
@@ -15,14 +16,39 @@ import {
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
-      <Route index element={<Navigate to="about" />} />
-      <Route index path="about" element={<AboutPage />}></Route>
+      <Route
+        index
+        element={<Navigate to="about" />}
+        errorElement={<ErrorPage />}
+      />
+      <Route
+        index
+        path="about"
+        element={<AboutPage />}
+        errorElement={<ErrorPage />}
+      ></Route>
       <Route path="posts">
-        <Route index element={<PostsPage />}></Route>
-        <Route path=":postid" element={<PostPage />}></Route>
+        <Route
+          index
+          element={<PostsPage />}
+          errorElement={<ErrorPage />}
+        ></Route>
+        <Route
+          path=":postid"
+          element={<PostPage />}
+          errorElement={<ErrorPage />}
+        ></Route>
       </Route>
-      <Route path="signin" element={<SigninPage />}></Route>
-      <Route path="signup" element={<SignupPage />}></Route>
+      <Route
+        path="signin"
+        element={<SigninPage />}
+        errorElement={<ErrorPage />}
+      ></Route>
+      <Route
+        path="signup"
+        element={<SignupPage />}
+        errorElement={<ErrorPage />}
+      ></Route>
     </Route>,
   ),
 );

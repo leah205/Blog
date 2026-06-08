@@ -23,7 +23,6 @@ export default function SigninPage() {
         type="text"
         label="Password"
       ></InputField>
-
       <Button type="submit" className="auth_btn" onClick={() => {}}>
         Sign In
       </Button>
