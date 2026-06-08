@@ -1,12 +1,10 @@
-const js = require("@eslint/js");
+import js from "@eslint/js";
+import tseslint from "typescript-eslint";
 
-module.exports = [
+export default [
   js.configs.recommended,
+  ...tseslint.configs.recommended,
   {
-    languageOptions: {
-      env: {
-        node: true,
-      },
-    },
+    files: ["**/*.ts"],
   },
 ];
