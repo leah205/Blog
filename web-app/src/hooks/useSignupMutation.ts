@@ -12,7 +12,7 @@ interface validationErrorType {
 
 export default function useSignupMutation(
   apiUrl: string,
-  setErrors: React.Dispatch<React.SetStateAction<string[] | never[]>>,
+  setErrors: React.Dispatch<React.SetStateAction<string[] | undefined>>,
 ) {
   const navigate = useNavigate();
   const fetchUrl = `${apiUrl}/signup`;
@@ -27,6 +27,13 @@ export default function useSignupMutation(
         navigate("/signup");
       } else {
         navigate("/signin");
+      }
+    },
+    onError: (error: Error & { errors?: string[] }) => {
+      if ("errors" in error) {
+        setErrors(error.errors);
+      } else {
+        setErrors([error.message]);
       }
     },
   });

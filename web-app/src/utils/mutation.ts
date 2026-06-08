@@ -1,14 +1,10 @@
-//import handle_response from "./handle_response";
+import handle_response from "./handle_response";
 
 export default async function mutate(
   url: string,
   formData: object,
   method: string,
 ) {
-  //   console.log(url);
-  //   console.log(method);
-  //   console.log(formData);
-
   const response = await fetch(`${url}`, {
     method: method,
     headers: {
@@ -17,7 +13,7 @@ export default async function mutate(
     body: JSON.stringify(formData),
   });
 
-  const res = await response.json();
-  console.log(res);
+  const res = await handle_response(response);
+
   return res;
 }

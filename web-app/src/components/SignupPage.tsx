@@ -10,8 +10,8 @@ export default function SignupPage() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
-  const [errors, setErrors] = useState<string[] | never[]>([]);
-  console.log(errors);
+  const [errors, setErrors] = useState<string[] | undefined>(undefined);
+
   const context = useContext(AuthContext);
   if (!context) {
     throw new Error("auth context is not defined");
@@ -32,7 +32,7 @@ export default function SignupPage() {
       <ul>
         {errors &&
           errors.map((error) => {
-            return <li>{error}</li>;
+            return <li key={error}>{error}</li>;
           })}
       </ul>
       <Form>
