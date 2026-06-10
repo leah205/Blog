@@ -56,5 +56,6 @@
     "types": ["node"]
   },
   "include": ["src", "test"],
-  "paths": { "*": ["*.d.ts"], "@/*": ["src/*"] }
+  "baseUrl": ".",
+  "paths": { "@/*": ["src/*"] }
 }

@@ -18,4 +18,12 @@ interface AuthContextType {
   apiUrl: string;
 }
 
-export type { User, Payload, AuthContextType };
+interface Post {
+  uploadedAt: string;
+  id: number;
+  author: string;
+  title: string;
+  content: string;
+}
+
+export type { User, Payload, AuthContextType, Post };
