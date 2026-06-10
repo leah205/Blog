@@ -2,6 +2,7 @@ import { AuthContext } from "./AuthContext";
 import React, { useContext } from "react";
 import usePostsQuery from "../hooks/usePostsQuery";
 import type { Post } from "../types/types";
+import { Link } from "react-router-dom";
 
 function PostsLayout({ children }: { children: React.ReactNode }) {
   return <div>{children}</div>;
@@ -31,8 +32,9 @@ export default function PostsPage() {
         {posts_info.data.map((post: Post) => {
           return (
             <div key={post.id}>
-              <h2>{post.title}</h2>
-              <p>{post.content}</p>
+              <h2>
+                <Link to={`${post.id}`}>{post.title}</Link>
+              </h2>
             </div>
           );
         })}
