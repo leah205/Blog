@@ -10,6 +10,14 @@ const postController = {
     const post = await postDB.getPost(Number(req.params.postid));
     res.json(post);
   },
+  getAdminPosts: async (req: Request, res: Response) => {
+    const posts = await postDB.getAdminPosts();
+    res.json(posts);
+  },
+  getAdminPost: async (req: Request, res: Response) => {
+    const post = await postDB.getAdminPost(Number(req.params.postid));
+    res.json(post);
+  },
   getPosts: async (req: Request, res: Response) => {
     const posts = await postDB.getPosts();
     res.json(posts);

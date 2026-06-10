@@ -28,13 +28,31 @@ const postDB = {
     return post;
   },
   getPosts: async () => {
+    const posts = await prisma.post.findMany({
+      where: {
+        published: true,
+      },
+    });
+
+    return posts;
+  },
+  getAdminPosts: async () => {
     const posts = await prisma.post.findMany();
     return posts;
+  },
+  getAdminPost: async (postid: number) => {
+    const post = await prisma.post.findUnique({
+      where: {
+        id: postid,
+      },
+    });
+    return post;
   },
   getPost: async (postid: number) => {
     const post = await prisma.post.findUnique({
       where: {
         id: postid,
+        published: true,
       },
     });
     return post;
