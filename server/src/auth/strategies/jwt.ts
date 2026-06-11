@@ -15,7 +15,6 @@ export default new JwtStrategy(opts, async function (jwt_payload, done) {
       },
     });
     if (!user) {
-      console.log("user authentication failed");
       done(null, false, { message: "user authentication failed" });
     }
     return done(null, user);

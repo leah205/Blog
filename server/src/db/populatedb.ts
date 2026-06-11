@@ -1,11 +1,18 @@
 import { Client } from "pg";
-import config from "@/config/config";
+import config from "../config/config.js";
 console.log(config.db_url);
 const SQL = `
+INSERT INTO posts (title, content, published, "authorId")
+VALUES 
+('taco', 'cat', true, 12);
+
+
 INSERT INTO comments (content, "authorId", "postId")
 VALUES
-  ('comment 1', 2, 20),
-  ('comment 2', 3, 20);
+  ('cool taco', 12,
+(SELECT id FROM posts WHERE title = 'taco')),
+  ('ugly taco', 13, (SELECT id FROM posts WHERE title = 'taco'))
+  
 
 `;
 // INSERT INTO posts (title, content, "authorId", published)

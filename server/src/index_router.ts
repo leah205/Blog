@@ -9,9 +9,9 @@ import publicRouter from "@/public/public_router";
 router.use("/public", publicRouter);
 router.use("/", authRouter);
 
-router.get("/", verifyToken, (req: Request, res: Response) =>
-  res.json("authorized"),
-);
-router.use("/posts", verifyToken, postRouter);
+// router.get("/", verifyToken, (req: Request, res: Response) =>
+//   res.json("authorized"),
+// );
+router.use("/posts", postRouter);
 
 export default router;
