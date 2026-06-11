@@ -1,37 +1,15 @@
 import type React from "react";
-import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
-import query from "../utils/query";
-//import type { Post } from "../types/types";
-import { useContext } from "react";
-import { AuthContext } from "./AuthContext";
-
-function PostLayout({ children }: { children: React.ReactNode }) {
-  return <div>{children}</div>;
-}
+import Post from "./Post";
+import Comments from "./Comments";
 
 export default function PostPage() {
   const params = useParams();
-  const context = useContext(AuthContext);
-  if (!context) {
-    throw new Error("Auth context does not exist");
-  }
-  const { apiUrl } = context;
-  const { isPending, isError, data, error } = useQuery({
-    queryKey: [`posts/${params.postid}`],
-    queryFn: async () => query(`${apiUrl}/posts/${params.postid}`),
-  });
-
-  if (isPending) {
-    return <PostLayout>Loading...</PostLayout>;
-  }
-  if (isError) {
-    return <PostLayout>Sorry! Something went wrong on our end</PostLayout>;
-  }
+  const postid = Number(params.postid);
   return (
-    <PostLayout>
-      <h1>{data.title}</h1>
-      <p>{data.content}</p>
-    </PostLayout>
+    <>
+      <Post postid={postid}></Post>
+      <Comments postid={postid}></Comments>
+    </>
   );
 }

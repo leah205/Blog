@@ -22,6 +22,9 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
           <li>
             <Link to="signin">Login</Link>
           </li>
+          <li>
+            <Link to="/">Signout</Link>
+          </li>
         </ul>
       </nav>
       <div>{children}</div>

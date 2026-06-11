@@ -8,7 +8,7 @@ interface Payload {
   id: number;
   is_author: boolean;
   username: string;
-  exp: string;
+  exp: number;
 }
 
 interface AuthContextType {
@@ -16,6 +16,7 @@ interface AuthContextType {
   signin: (user: User) => void;
   signout: () => void;
   apiUrl: string;
+  getUserData: () => User | null;
 }
 
 interface Post {
@@ -26,4 +27,11 @@ interface Post {
   content: string;
 }
 
-export type { User, Payload, AuthContextType, Post };
+interface Comment {
+  uploadedAt: string;
+  id: number;
+  author: string;
+  content: string;
+}
+
+export type { User, Payload, AuthContextType, Post, Comment };
