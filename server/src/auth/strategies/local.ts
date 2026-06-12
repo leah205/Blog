@@ -4,12 +4,15 @@ import { Strategy as LocalStrategy } from "passport-local";
 import prisma from "@/db/prisma_client";
 
 export default new LocalStrategy(async (username, password, done) => {
+  console.log(username);
+  console.log(password);
   try {
     const user = await prisma.user.findUnique({
       where: {
         username: username,
       },
     });
+    console.log(user);
 
     if (!user) {
       console.log("incorrect username");

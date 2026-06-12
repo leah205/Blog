@@ -32,7 +32,7 @@ const validation = {
     body("content").trim().notEmpty().withMessage("Post must have content"),
   ],
   createComment: [
-    body("content").trim().notEmpty().withMessage("Post must have content"),
+    body("content").trim().notEmpty().withMessage("Comment must have content"),
   ],
 };
 
