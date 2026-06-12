@@ -5,6 +5,7 @@ import PostsPage from "./components/PostsPage";
 import SigninPage from "./components/SigninPage";
 import SignupPage from "./components/SignupPage";
 import ErrorPage from "./components/ErrorPage";
+import "./App.css";
 
 import {
   Route,

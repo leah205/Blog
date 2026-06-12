@@ -12,7 +12,11 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
 
   return (
     <>
-      {user && <h1>Welcome {user.username}</h1>}
+      {user && (
+        <h1 className="text-3xl font-bold underline">
+          Welcome {user.username}
+        </h1>
+      )}
       <nav>
         <ul>
           <li>
