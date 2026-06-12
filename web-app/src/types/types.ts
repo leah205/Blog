@@ -16,7 +16,6 @@ interface AuthContextType {
   signin: (user: User) => void;
   signout: () => void;
   apiUrl: string;
-  getUserData: () => User | null;
 }
 
 interface Post {

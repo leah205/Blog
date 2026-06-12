@@ -17,7 +17,7 @@ export default function Comments({ postid }: { postid: number }) {
   }
   const { apiUrl } = context;
   const { isPending, isError, data, error } = useQuery({
-    queryKey: [`posts/${postid}/comments`],
+    queryKey: ["comments", `${postid}`],
     queryFn: async () => query(`${apiUrl}/posts/${postid}/comments`),
   });
 

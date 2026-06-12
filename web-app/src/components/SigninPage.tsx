@@ -16,9 +16,9 @@ export default function SigninPage() {
     throw new Error("auth context is not defined");
   }
 
-  const { apiUrl } = context;
+  const { apiUrl, signin } = context;
 
-  const signinMutation = useSigninMutation(apiUrl, setErrors);
+  const signinMutation = useSigninMutation(apiUrl, setErrors, signin);
   function handleSubmit() {
     signinMutation.mutate({
       username: username,

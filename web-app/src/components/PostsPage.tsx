@@ -1,5 +1,5 @@
 import { AuthContext } from "./AuthContext";
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import usePostsQuery from "../hooks/usePostsQuery";
 import type { Post } from "../types/types";
 import { Link } from "react-router-dom";
@@ -10,6 +10,7 @@ function PostsLayout({ children }: { children: React.ReactNode }) {
 
 export default function PostsPage() {
   const context = useContext(AuthContext);
+
   if (!context) {
     throw new Error("Auth context does not exist");
   }
