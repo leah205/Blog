@@ -31,7 +31,6 @@ export default function useSigninMutation(
       navigate("/about");
     },
     onError: (error) => {
-      console.log(error);
       setErrors([error.message]);
     },
   });
