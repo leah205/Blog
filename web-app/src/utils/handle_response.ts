@@ -1,8 +1,12 @@
 import type { ValidationError } from "~/Errors/ValidationError";
 
 const handleResponse = async (response: Response) => {
-  const data = await response.json();
-  console.log(response.status);
+  let data;
+  try {
+    data = await response.json();
+  } catch {
+    throw new Error(`Something went wrong. Try again later`);
+  }
   if (data.errors) {
     const errorMessages = data.errors.map((error: object & { msg: string }) => {
       return error.msg;

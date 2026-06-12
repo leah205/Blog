@@ -4,7 +4,6 @@ import { AuthContext } from "./AuthContext";
 import { useContext } from "react";
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
-  // context for whether there is a user - sign in / stay out
   const context = useContext(AuthContext);
   if (!context) {
     throw new Error("auth context is not defined");

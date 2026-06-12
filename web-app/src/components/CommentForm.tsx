@@ -3,21 +3,40 @@ import { AuthContext } from "./AuthContext";
 import Form from "./ui/Form";
 import InputField from "./ui/InputField";
 import Button from "./ui/Button";
+import useCommentMutation from "../hooks/useCommentMutation";
+import { useParams } from "react-router-dom";
 
 export default function CommentForm() {
-  //const [content, setContent] = useState<string>("");
+  const [content, setContent] = useState<string>("");
+  const [errors, setErrors] = useState<string[] | undefined>(undefined);
+  const params = useParams();
   const context = useContext(AuthContext);
   if (!context) {
     throw new Error("no auth context found!");
   }
+  const { user, apiUrl } = context;
 
-  const { user, signout, apiUrl } = context;
-  console.log(user);
-  return <p>insert comment form here</p>;
+  if (params.postid == undefined) {
+    throw new Error("no post found!");
+  }
+
+  const commentMutation = useCommentMutation(apiUrl, params.postid, setErrors);
 
   if (user) {
+    function handleSubmit() {
+      commentMutation.mutate({
+        content: content,
+        authorId: user.id,
+        postid: params.postid,
+      });
+    }
     return (
       <Form>
+        <ul>
+          {errors?.map((err) => (
+            <li>{err}</li>
+          ))}
+        </ul>
         <InputField
           value={content}
           onChange={(e) => setContent(e.target.value)}
