@@ -25,17 +25,23 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
           <li>
             <Link to="posts">Posts</Link>
           </li>
-          <li>
-            <Link to="signup">Register</Link>
-          </li>
-          <li>
-            <Link to="signin">Login</Link>
-          </li>
-          <li>
-            <Link onClick={signout} to="/">
-              Signout
-            </Link>
-          </li>
+          {!user && (
+            <li>
+              <Link to="signup">Register</Link>
+            </li>
+          )}
+          {!user && (
+            <li>
+              <Link to="signin">Login</Link>
+            </li>
+          )}
+          {user && (
+            <li>
+              <Link onClick={signout} to="/">
+                Signout
+              </Link>
+            </li>
+          )}
         </ul>
       </nav>
       <div>{children}</div>
