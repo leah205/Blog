@@ -4,6 +4,7 @@ import Form from "./ui/Form";
 import InputField from "./ui/InputField";
 import { useState, useContext } from "react";
 import { AuthContext } from "./AuthContext";
+import ValidationError from "./ui/ValidationError";
 
 export default function SigninPage() {
   const [username, setUsername] = useState("");
@@ -31,7 +32,7 @@ export default function SigninPage() {
       <ul>
         {errors &&
           errors.map((error) => {
-            return <li key={error}>{error}</li>;
+            return <ValidationError key={error}>{error}</ValidationError>;
           })}
       </ul>
       <InputField

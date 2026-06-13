@@ -5,6 +5,7 @@ import InputField from "./ui/InputField";
 import Button from "./ui/Button";
 import useCommentMutation from "../hooks/useCommentMutation";
 import { useParams } from "react-router-dom";
+import ValidationError from "./ui/ValidationError";
 
 export default function CommentForm() {
   const [content, setContent] = useState<string>("");
@@ -51,5 +52,5 @@ export default function CommentForm() {
     );
   }
 
-  return <p>sign in to comment!</p>;
+  return <ValidationError>sign in to comment!</ValidationError>;
 }

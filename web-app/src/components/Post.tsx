@@ -31,7 +31,8 @@ export default function Post({ postid }: { postid: number }) {
     <ContentLayout>
       <h1 className="text-3xl">{data.title}</h1>
       <p className="text-2xl">{data.author.username}</p>
-      <p className="text-2xl">{formatDate(data.uploadedAt)}</p>
+      <p className="text-xl pb-2">{formatDate(data.uploadedAt)}</p>
+      <hr />
       <p className="text-xl">{data.content}</p>
     </ContentLayout>
   );

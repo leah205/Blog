@@ -12,7 +12,7 @@ function PostsLayout({ children }: { children: React.ReactNode }) {
 function PostCard({ post }: { post: Post }) {
   console.log(post);
   return (
-    <div className=" text-center p-6 rounded-md border-1 border-mist-400 shadow-sm w-50 h-50">
+    <div className=" text-center hover:bg-mist-50 p-6 rounded-md border-1 border-mist-400 shadow-sm w-50 h-50">
       <h2 className="text-xl">
         <Link to={`${post.id}`}>{post.title}</Link>
       </h2>

@@ -4,6 +4,7 @@ import InputField from "./ui/InputField";
 import { useState, useContext } from "react";
 import { AuthContext } from "./AuthContext";
 import useSignupMutation from "../hooks/useSignupMutation";
+import ValidationError from "./ui/ValidationError";
 
 export default function SignupPage() {
   const [username, setUsername] = useState("");
@@ -29,13 +30,13 @@ export default function SignupPage() {
   }
   return (
     <>
-      <ul>
-        {errors &&
-          errors.map((error) => {
-            return <li key={error}>{error}</li>;
-          })}
-      </ul>
       <Form>
+        <ul>
+          {errors &&
+            errors.map((error) => {
+              return <ValidationError key={error}>{error}</ValidationError>;
+            })}
+        </ul>
         <InputField
           value={username}
           onChange={(e) => setUsername(e.target.value)}
