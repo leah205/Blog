@@ -3,6 +3,18 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "./AuthContext";
 import { useContext } from "react";
 
+function NavLink({ children }: { children: React.ReactNode }) {
+  return (
+    <li className=" text-mist-500 hover:text-mist-700 px-5  hover:bg-mist-100 rounded-sm py-5">
+      {children}
+    </li>
+  );
+}
+
+function NavList({ children }: { children: React.ReactNode }) {
+  return <ul className="flex-1 flex-row flex max-w-fit ">{children}</ul>;
+}
+
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   const context = useContext(AuthContext);
   if (!context) {
@@ -17,36 +29,40 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
           Welcome {user.username}
         </h1>
       )}
-      <nav>
-        <ul>
-          <li>
+      <nav className="mb-10 flex justify-between">
+        <NavList>
+          <NavLink>
             <Link to="about">Logo</Link>
-          </li>
-          <li>
+          </NavLink>
+          <NavLink>
             <Link to="about">About</Link>
-          </li>
-          <li>
+          </NavLink>
+          <NavLink>
             <Link to="posts">Posts</Link>
-          </li>
+          </NavLink>
+        </NavList>
+
+        <NavList>
           {!user && (
-            <li>
+            <NavLink>
               <Link to="signup">Register</Link>
-            </li>
+            </NavLink>
           )}
           {!user && (
-            <li>
+            <NavLink>
               <Link to="signin">Login</Link>
-            </li>
+            </NavLink>
           )}
           {user && (
-            <li>
+            <NavLink>
               <Link onClick={signout} to="/">
                 Signout
               </Link>
-            </li>
+            </NavLink>
           )}
-        </ul>
+        </NavList>
       </nav>
+
       <div>{children}</div>
     </>
   );

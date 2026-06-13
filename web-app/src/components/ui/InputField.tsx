@@ -9,9 +9,12 @@ interface Props {
 
 export default function InputField(props: Props) {
   return (
-    <div>
-      <label htmlFor={props.name}>{props.label}</label>
+    <div className="py-2 flex justify-between w-3/4 ">
+      <label className="flex items-center" htmlFor={props.name}>
+        {props.label}:
+      </label>
       <input
+        className="border-mist-300  border-2 rounded-xs shadow-xs ml-6 w-2/3 items-center"
         type="text"
         onChange={props.onChange}
         id={props.name}

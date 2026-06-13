@@ -10,7 +10,7 @@ interface Props {
 export default function Button({ children, type, className, click }: Props) {
   return (
     <button
-      className={className}
+      className="bg-blue-500 hover:bg-blue-700 text-white p-3 rounded-sm {className}"
       type={type}
       onClick={(e) => {
         click();
