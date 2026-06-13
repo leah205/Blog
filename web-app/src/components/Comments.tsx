@@ -4,6 +4,7 @@ import query from "../utils/query";
 import type { Comment } from "../types/types";
 import { useContext } from "react";
 import { AuthContext } from "./AuthContext";
+
 import CommentForm from "./CommentForm";
 
 function CommentsLayout({ children }: { children: React.ReactNode }) {
@@ -17,10 +18,11 @@ function CommentsLayout({ children }: { children: React.ReactNode }) {
   );
 }
 
-function Comment({ children }: { children: React.ReactNode }) {
+function Comment({ comment }: { comment: Comment }) {
   return (
     <div className=" p-10 rounded-md shadow-md border-1 bg-mist-50 border-mist-400">
-      {children}
+      <p>{comment.content}</p>
+      <p>{comment.author.username}</p>
     </div>
   );
 }
@@ -57,7 +59,7 @@ export default function Comments({ postid }: { postid: number }) {
   return (
     <CommentsLayout>
       {data.map((comment: Comment) => {
-        return <Comment key={comment.id}>{comment.content}</Comment>;
+        return <Comment key={comment.id} comment={comment}></Comment>;
       })}
       <CommentForm></CommentForm>
     </CommentsLayout>

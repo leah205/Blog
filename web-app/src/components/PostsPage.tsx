@@ -1,5 +1,5 @@
 import { AuthContext } from "./AuthContext";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import usePostsQuery from "../hooks/usePostsQuery";
 import type { Post } from "../types/types";
 import { Link } from "react-router-dom";
@@ -8,10 +8,15 @@ function PostsLayout({ children }: { children: React.ReactNode }) {
   return <div className="flex flex-wrap gap-10 m-20">{children}</div>;
 }
 
-function PostCard({ children }: { children: React.ReactNode }) {
+function PostCard({ post }: { post: Post }) {
+  console.log(post);
   return (
     <div className=" text-center p-6 rounded-md border-1 border-mist-400 shadow-sm w-50 h-50">
-      {children}
+      <h2 className="text-xl">
+        <Link to={`${post.id}`}>{post.title}</Link>
+      </h2>
+      <p>{post.author.username}</p>
+      <p>{post.uploadedAt}</p>
     </div>
   );
 }
@@ -39,15 +44,7 @@ export default function PostsPage() {
       <PostsLayout>
         {console.log(posts_info.data)}
         {posts_info.data.map((post: Post) => {
-          return (
-            <PostCard key={post.id}>
-              <h2 className="text-xl">
-                <Link to={`${post.id}`}>{post.title}</Link>
-              </h2>
-              <p>{post.author}</p>
-              <p>{post.uploadedAt}</p>
-            </PostCard>
-          );
+          return <PostCard key={post.id} post={post}></PostCard>;
         })}
       </PostsLayout>
     );

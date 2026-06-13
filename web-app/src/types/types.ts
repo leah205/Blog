@@ -21,7 +21,7 @@ interface AuthContextType {
 interface Post {
   uploadedAt: string;
   id: number;
-  author: string;
+  author: { username: string };
   title: string;
   content: string;
 }
@@ -29,7 +29,7 @@ interface Post {
 interface Comment {
   uploadedAt: string;
   id: number;
-  author: string;
+  author: { username: string };
   content: string;
 }
 
