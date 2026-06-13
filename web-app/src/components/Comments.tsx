@@ -7,7 +7,22 @@ import { AuthContext } from "./AuthContext";
 import CommentForm from "./CommentForm";
 
 function CommentsLayout({ children }: { children: React.ReactNode }) {
-  return <div>{children}</div>;
+  return (
+    <div
+      className="flex flex-col gap-3 mt-10
+    w-3/4 m-auto"
+    >
+      {children}
+    </div>
+  );
+}
+
+function Comment({ children }: { children: React.ReactNode }) {
+  return (
+    <div className=" p-10 rounded-md shadow-md border-1 bg-mist-50 border-mist-400">
+      {children}
+    </div>
+  );
 }
 
 export default function Comments({ postid }: { postid: number }) {
@@ -42,7 +57,7 @@ export default function Comments({ postid }: { postid: number }) {
   return (
     <CommentsLayout>
       {data.map((comment: Comment) => {
-        return <div key={comment.id}>{comment.content}</div>;
+        return <Comment key={comment.id}>{comment.content}</Comment>;
       })}
       <CommentForm></CommentForm>
     </CommentsLayout>

@@ -5,7 +5,15 @@ import type { Post } from "../types/types";
 import { Link } from "react-router-dom";
 
 function PostsLayout({ children }: { children: React.ReactNode }) {
-  return <div>{children}</div>;
+  return <div className="flex flex-wrap gap-10 m-20">{children}</div>;
+}
+
+function PostCard({ children }: { children: React.ReactNode }) {
+  return (
+    <div className=" text-center p-6 rounded-md border-1 border-mist-400 shadow-sm w-50 h-50">
+      {children}
+    </div>
+  );
 }
 
 export default function PostsPage() {
@@ -32,11 +40,13 @@ export default function PostsPage() {
         {console.log(posts_info.data)}
         {posts_info.data.map((post: Post) => {
           return (
-            <div key={post.id}>
-              <h2>
+            <PostCard key={post.id}>
+              <h2 className="text-xl">
                 <Link to={`${post.id}`}>{post.title}</Link>
               </h2>
-            </div>
+              <p>{post.author}</p>
+              <p>{post.uploadedAt}</p>
+            </PostCard>
           );
         })}
       </PostsLayout>

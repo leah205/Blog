@@ -6,7 +6,11 @@ import { useContext } from "react";
 import { AuthContext } from "./AuthContext";
 
 function PostLayout({ children }: { children: React.ReactNode }) {
-  return <div>{children}</div>;
+  return (
+    <div className="w-3/4 m-auto p-10 rounded-md shadow-md border-1 bg-mist-50 border-mist-400">
+      {children}
+    </div>
+  );
 }
 
 export default function Post({ postid }: { postid: number }) {
@@ -29,8 +33,8 @@ export default function Post({ postid }: { postid: number }) {
   }
   return (
     <PostLayout>
-      <h1>{data.title}</h1>
-      <p>{data.content}</p>
+      <h1 className="text-3xl">{data.title}</h1>
+      <p className="text-xl">{data.content}</p>
     </PostLayout>
   );
 }
