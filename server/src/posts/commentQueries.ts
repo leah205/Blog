@@ -6,6 +6,13 @@ const commentQueries = {
       where: {
         postId: postid,
       },
+      include: {
+        author: {
+          select: {
+            username: true,
+          },
+        },
+      },
     });
     return comments;
   },

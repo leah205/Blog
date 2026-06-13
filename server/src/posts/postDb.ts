@@ -32,12 +32,27 @@ const postDB = {
       where: {
         published: true,
       },
+      include: {
+        author: {
+          select: {
+            username: true,
+          },
+        },
+      },
     });
 
     return posts;
   },
   getAdminPosts: async () => {
-    const posts = await prisma.post.findMany();
+    const posts = await prisma.post.findMany({
+      include: {
+        author: {
+          select: {
+            username: true,
+          },
+        },
+      },
+    });
     return posts;
   },
   getAdminPost: async (postid: number) => {
@@ -45,7 +60,15 @@ const postDB = {
       where: {
         id: postid,
       },
+      include: {
+        author: {
+          select: {
+            username: true,
+          },
+        },
+      },
     });
+
     return post;
   },
   getPost: async (postid: number) => {
@@ -53,6 +76,13 @@ const postDB = {
       where: {
         id: postid,
         published: true,
+      },
+      include: {
+        author: {
+          select: {
+            username: true,
+          },
+        },
       },
     });
     return post;
