@@ -4,6 +4,7 @@ import query from "../utils/query";
 import type { Comment } from "../types/types";
 import { useContext } from "react";
 import { AuthContext } from "./AuthContext";
+import formatDate from "../utils/formatDate";
 
 import CommentForm from "./CommentForm";
 
@@ -23,6 +24,7 @@ function Comment({ comment }: { comment: Comment }) {
     <div className=" p-10 rounded-md shadow-md border-1 bg-mist-50 border-mist-400">
       <p>{comment.content}</p>
       <p>{comment.author.username}</p>
+      <p>{formatDate(comment.uploadedAt)}</p>
     </div>
   );
 }

@@ -5,6 +5,7 @@ import query from "../utils/query";
 import { useContext } from "react";
 import { AuthContext } from "./AuthContext";
 import ContentLayout from "./ui/ContentLayout";
+import formatDate from "../utils/formatDate";
 
 export default function Post({ postid }: { postid: number }) {
   const context = useContext(AuthContext);
@@ -30,6 +31,7 @@ export default function Post({ postid }: { postid: number }) {
     <ContentLayout>
       <h1 className="text-3xl">{data.title}</h1>
       <p className="text-2xl">{data.author.username}</p>
+      <p className="text-2xl">{formatDate(data.uploadedAt)}</p>
       <p className="text-xl">{data.content}</p>
     </ContentLayout>
   );
