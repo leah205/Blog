@@ -19,6 +19,8 @@ model User {
   is_author Boolean @default(false)
   posts Post[]
   comments Comment[]
+  followedBy User[]  @relation("UserFollows")
+  following  User[]  @relation("UserFollows")
   @@map("users")
 } 
 
@@ -28,6 +30,8 @@ model Session {
   data      String   
   expiresAt   DateTime
 }
+
+
 
 model Post {
   id    Int     @id @default(autoincrement()) 

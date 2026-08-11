@@ -88,7 +88,6 @@ const postDB = {
     return post;
   },
   updatePost: async (newFields: updateObject, postid: number) => {
-    console.log(newFields);
     const post = await prisma.post.update({
       where: {
         id: postid,
